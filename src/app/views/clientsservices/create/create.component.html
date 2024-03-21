@@ -1,0 +1,65 @@
+<div class="container">
+    <h1 class="text-center">Registro de servicios para clientes</h1>
+    <a href="#" routerLink="/clientsservices/index" class="btn btn-warning">Volver</a>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-group">
+        <label for="fclients">Cliente</label>
+        <select id="fclients" formControlName="fclients" class="form-control">
+            <option disabled selected value [ngValue]="null"> -- Cliente  -- </option>
+            <option *ngFor="let client of clients" [ngValue]="client.ppbId">{{client.ppcName}}</option>
+        </select>
+        <div *ngIf="f['fclients'].touched && f['fclients'].invalid" class="alert alert-danger">
+            <div *ngIf="f['fclients'].errors && f['fclients'].errors['required']">Seleccione un cliente</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fservices">Servicio</label>
+        <select id="fservices" formControlName="fservices" class="form-control">
+            <option disabled selected value [ngValue]="null"> -- Servicio  -- </option>
+            <option *ngFor="let service of services" [value]="service.ppsId">{{service.ppsName}}</option>
+        </select>
+        <div *ngIf="f['fservices'].touched && f['fservices'].invalid" class="alert alert-danger">
+            <div *ngIf="f['fservices'].errors && f['fservices'].errors['required']">Seleccione un servicio</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fschemes">Esquema</label>
+        <select id="fschemes" formControlName="fschemes" class="form-control">
+            <option disabled selected value [ngValue]="null"> -- Esquema  -- </option>
+            <option *ngFor="let scheme of schemes" [value]="scheme.ppscId">{{scheme.ppscName}}</option>
+        </select>
+        <div *ngIf="f['fschemes'].touched && f['fschemes'].invalid" class="alert alert-danger">
+            <div *ngIf="f['fschemes'].errors && f['fschemes'].errors['required']">Seleccione un esquema</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fstatus">Status</label>
+        <select id="fstatus" formControlName="fstatus" class="form-control">
+            <option disabled selected value [ngValue]="null"> -- Status  -- </option>
+            <option *ngFor="let statu of status" [value]="statu.ppstId">{{statu.ppstName}}</option>
+        </select>
+        <div *ngIf="f['fstatus'].touched && f['fstatus'].invalid" class="alert alert-danger">
+            <div *ngIf="f['fstatus'].errors && f['fstatus'].errors['required']">Seleccione un status</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="fpay">Pago</label>
+        <input type="number" id="fpay" formControlName="fpay" class="form-control" [min]="1">
+        <div *ngIf="f['fpay'].touched && f['fpay'].invalid" class="alert alert-danger">
+            <div *ngIf="f['fpay'].errors && f['fpay'].errors['required']">Seleccione un pago valido</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fpaydate">Fecha de Pago</label>
+        <input type="date" id="fpaydate" formControlName="fpaydate" class="form-control">
+        <div *ngIf="f['fpaydate'].touched && f['fpaydate'].invalid" class="alert alert-danger">
+            <div *ngIf="f['fpaydate'].errors && f['fpaydate'].errors['required']">Seleccione una fecha de pago valida</div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Crear</button>
+    </form>
+</div>
