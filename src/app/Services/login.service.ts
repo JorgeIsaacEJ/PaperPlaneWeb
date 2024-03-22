@@ -14,7 +14,7 @@ export class LoginService {
 
     constructor(private http:HttpClient) { }
 
-    getList(mail:string, pass:string):Observable<Login>{
-        return this.http.get<Login>(`${this.apiUrl}GetLogin`+ mail + pass);
+    get(mail:string, pass:string):Observable<Login[]>{
+        return this.http.get<Login[]>(`${this.apiUrl}GetLogin?mail=`+ mail + "&pass=" + pass);
       }
 }

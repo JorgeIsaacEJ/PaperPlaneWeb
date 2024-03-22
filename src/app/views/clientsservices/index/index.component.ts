@@ -21,7 +21,6 @@ export class IndexComponent {
   ngOnInit():void{
     this.clientsservicesService.getList().subscribe((data:Clientsservicesfull[])=>{
       this.clientsservicesfull = data;
-      console.log(this.clientsservicesfull);
     })
   }
 }
