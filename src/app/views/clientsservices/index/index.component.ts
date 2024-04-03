@@ -6,13 +6,13 @@ import { Clientsservicesfull } from '../../../Interfaces/clientsservicesfull';
 import { ClientsservicesService } from '../../../Services/clientsservices.service';
 
 @Component({
-  selector: 'app-index',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './index.component.html',
-  styleUrl: './index.component.css'
+    selector: 'app-index',
+    standalone: true,
+    imports: [CommonModule, RouterModule],
+    templateUrl: './index.component.html',
+    styleUrl: './index.component.css'
 })
-export class IndexComponent {
+export class ClientsservicesIndexComponent {
   clientsservices:Clientsservices[]=[];
   clientsservicesfull:Clientsservicesfull[]=[];
 

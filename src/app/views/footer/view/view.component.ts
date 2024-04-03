@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './view.component.html',
   styleUrl: './view.component.css'
 })
-export class ClientsservicesServiceViewComponent {
+export class FoooterViewComponent {
 
 }

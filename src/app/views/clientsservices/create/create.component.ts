@@ -14,13 +14,13 @@ import { Status } from '../../../Interfaces/status';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './create.component.html',
-  styleUrl: './create.component.css'
+    selector: 'app-create',
+    standalone: true,
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './create.component.html',
+    styleUrl: './create.component.css'
 })
-export class CreateComponent {
+export class ClientsservicesServiceCreateComponent {
   form!:FormGroup;
   clients: Clients[] = [];
   services: Services[] = [];
@@ -51,7 +51,6 @@ export class CreateComponent {
       ppcsDateCrete: new Date,
       ppcsDateUpdate: new Date
     });
-    console.log(this.form.controls['fclientservices'].value);
     this.clientsServicesService.add(this.form.controls['fclientservices'].value).subscribe((res:any)=>{
       alert("Se creo un nuevo registro");
       this.router.navigateByUrl('/clientsservices/index');

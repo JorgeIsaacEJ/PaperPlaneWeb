@@ -1,7 +1,8 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../../Services/login.service';
+import { Login } from '../../../Interfaces/login';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -13,11 +14,13 @@ import Swal from 'sweetalert2';
   styleUrl: './index.component.css'
 })
 export class LoginComponent {
+  login: Login[] = []
   form!:FormGroup;
   email:string;
   pass:string;
   index: string;
-  constructor(public loginservice: LoginService,
+  constructor(@Inject(DOCUMENT) document: Document,
+              public loginservice: LoginService,
               public router: Router){
                 
     this.email = "";
@@ -28,7 +31,8 @@ export class LoginComponent {
     if (localStorage) {
       const counter = localStorage.getItem('paperaccess');
       if (counter) {
-        this.router.navigateByUrl("/" + Object.keys(JSON.parse(counter)).map(key => ({type: key, value: JSON.parse(counter)[key]}))[1].value[0]);
+        //Default first page
+        this.router.navigateByUrl("/home");
       }
       else{
         //localStorage.removeItem('paperaccess');
@@ -45,13 +49,14 @@ export class LoginComponent {
 
   getLogin() {
     this.loginservice.get(this.form.controls['femail'].value, this.form.controls['fpass'].value).subscribe((data:any)=>{
-      this.index = (Object.keys(data).map(key => ({type: key, value: data[key]}))[1].value[0] != "") ? "/" + Object.keys(data).map(key => ({type: key, value: data[key]}))[1].value[0] : "";
+      this.login = data;
+      this.index = (Object.values(Object.values(this.login)[1])[0]["userPages"] != "") ? "/" + Object.values(Object.values(this.login)[1])[0]["userPages"] : "";
       let name_find = Object.keys(data).map(key => ({type: key, value: data[key]}))[0].value[0];
       let name = Object.keys(name_find).map(key => ({type: key, value: name_find[key]}))[1].value;
       if(this.index != ""){
         localStorage.setItem('paperaccess', JSON.stringify(data));
         Swal.fire('Bienvenido ' + name);
-        this.router.navigateByUrl("/" + this.index);
+        this.router.navigateByUrl("/home");
       }
       else{
         Swal.fire('Usuario o contraseña incorrectos por favor verifique');

@@ -12,4 +12,6 @@ export interface Log {
 }
 export interface Pages {
     userPages: string,
+    pageName: string,
+    pageIcon: string
 }
