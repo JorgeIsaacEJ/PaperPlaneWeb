@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Clientsservices } from '../../../Interfaces/clientsservices';
 import { Clientsservicesfull } from '../../../Interfaces/clientsservicesfull';
 import { ClientsservicesService } from '../../../Services/clientsservices.service';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
     selector: 'app-index',
@@ -13,14 +14,20 @@ import { ClientsservicesService } from '../../../Services/clientsservices.servic
     styleUrl: './index.component.css'
 })
 export class ClientsservicesIndexComponent {
+  watch: boolean = false;
   clientsservices:Clientsservices[]=[];
   clientsservicesfull:Clientsservicesfull[]=[];
 
-  constructor(public clientsservicesService:ClientsservicesService){}
+  constructor(public loginservice: LoginService, 
+              public clientsservicesService:ClientsservicesService){}
 
   ngOnInit():void{
-    this.clientsservicesService.getList().subscribe((data:Clientsservicesfull[])=>{
-      this.clientsservicesfull = data;
+    //Valida si el usuario esta logeado
+    this.loginservice.validateAccess().subscribe((data: boolean)=>{
+      this.watch = data;
+      this.clientsservicesService.getList().subscribe((data:Clientsservicesfull[])=>{
+        this.clientsservicesfull = data;
+      })
     })
   }
 }

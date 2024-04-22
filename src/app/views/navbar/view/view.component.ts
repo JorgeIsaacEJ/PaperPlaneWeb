@@ -2,13 +2,13 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Pages } from '../../../Interfaces/login';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbarview',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterOutlet],
   templateUrl: './view.component.html',
   styleUrl: './view.component.css'
 })

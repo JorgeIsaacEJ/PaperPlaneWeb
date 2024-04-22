@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" *ngIf="watch">
     <h1 class="text-center">Registro de servicios para clientes</h1>
-    <a href="#" routerLink="/clientsservices/index" class="btn btn-warning">Volver</a>
+    <a href="#" routerLink="/clientsservices/index/" class="btn btn-warning">Volver</a>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="watch">
     <h1 class="text-center">Registro de clientes/servicios</h1>
     <a href="#" routerLink="/clientsservices/create/" class="btn btn-success">Nuevo Cliente/Servicio</a>
     <table class="table table-striped">
@@ -10,7 +10,10 @@
                 <th>Esquema</th>
                 <th>Status</th>
                 <th>Negocio</th>
-                <th>Pago</th>
+                <th>Costo</th>
+                <!-- <th>Pagado</th>
+                <th>Campanias</th>
+                <th>Comisiones</th> -->
                 <th>Fecha/Pago</th>
                 <th>Acciones</th>
             </tr>
@@ -24,6 +27,9 @@
                 <td>{{clientsservices.ppst_name}}</td>
                 <td>{{clientsservices.ppb_name}}</td>
                 <td>{{clientsservices.ppcs_pay | currency:'USD':true:'1.2-2'}}</td>
+                <!-- <td>{{clientsservices.ppcs_pays | currency:'USD':true:'1.2-2'}}</td>
+                <td>{{clientsservices.ppcs_pays_campaign | currency:'USD':true:'1.2-2'}}</td>
+                <td>{{clientsservices.ppcs_pays_task | currency:'USD':true:'1.2-2'}}</td> -->
                 <td>{{clientsservices.ppcs_date_pay | date: 'dd/MM/yyyy'}}</td>
                 <td>
                     <a href="#" [routerLink]="['/clientsservices/', clientsservices.ppc_id, 'view']" class="btn btn-info">Info</a>

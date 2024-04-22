@@ -1,7 +1,7 @@
 <div class="" *ngIf="menuActive">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-      <a class="navbar-brand navbar-logo">Paper Plane</a>
+      <a href="#" class="navbar-brand navbar-logo" routerLink="/home">Paper Plane</a>
       <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fas fa-bars text-white"></i>
       </button>
@@ -21,3 +21,4 @@
   </nav>
   </form>
 </div>
+<router-outlet></router-outlet>

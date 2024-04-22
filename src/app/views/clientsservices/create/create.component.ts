@@ -12,6 +12,7 @@ import { Schemes } from '../../../Interfaces/schemes';
 import { StatusService } from '../../../Services/status.service';
 import { Status } from '../../../Interfaces/status';
 import { Router } from '@angular/router';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
     selector: 'app-create',
@@ -21,6 +22,7 @@ import { Router } from '@angular/router';
     styleUrl: './create.component.css'
 })
 export class ClientsservicesServiceCreateComponent {
+  watch: boolean = false;
   form!:FormGroup;
   clients: Clients[] = [];
   services: Services[] = [];
@@ -28,7 +30,8 @@ export class ClientsservicesServiceCreateComponent {
   status: Status[] = [];
   clientServices: Clientsservices[] = [];
 
-  constructor(public clientsServicesService: ClientsservicesService, 
+  constructor(public loginservice: LoginService, 
+              public clientsServicesService: ClientsservicesService, 
               private clientsServices: ClientsService, 
               private servicesService: ServicesService, 
               private schemesService: SchemesService,
@@ -37,7 +40,11 @@ export class ClientsservicesServiceCreateComponent {
   }
 
   ngOnInit(){
-    this.CreateForm();
+    //Valida si el usuario esta logeado
+    this.loginservice.validateAccess().subscribe((data: boolean)=>{
+      this.watch = data;
+      this.CreateForm();
+    })
   }
 
   submit(){

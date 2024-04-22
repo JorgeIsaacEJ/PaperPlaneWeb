@@ -12,7 +12,7 @@ import { ClientsService } from '../../../Services/clients.service';
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })
-export class CreateComponent {
+export class ClientsCreateComponent {
   form!:FormGroup;
   clients: Clients[] = [];
 
