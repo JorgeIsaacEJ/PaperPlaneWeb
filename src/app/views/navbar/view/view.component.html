@@ -1,24 +1,38 @@
-<div class="" *ngIf="menuActive">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <nav class="navbar navbar-expand-custom navbar-mainbg">
-      <a href="#" class="navbar-brand navbar-logo" routerLink="/home">Paper Plane</a>
-      <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars text-white"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-              <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-              <li class="nav-item" *ngFor="let item of pages">
-                <a class="nav-link" href="/{{item.userPages}}"><i class="fas fa-tachometer-alt"></i>{{item.pageName}}</a>
-              </li>
-          </ul>
+<div class="row" *ngIf="menuActive">
+  <div class="col-sm-auto sticky-top">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 100px;">
+        <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+            <li class="nav-item"> 
+              <a routerLink="/home" class="nav-link py-3 border-bottom active"> 
+                <i class="fa fa-home"></i> 
+                <small>Paper Plane</small> 
+              </a> </li>
+            <li *ngFor="let item of pages"> 
+              <a routerLink="{{item.userPages}}" class="nav-link py-3 border-bottom"> 
+                <i class="fa fa-dashboard"></i> 
+                <small>{{item.pageName}}</small> 
+              </a> 
+            </li>
+        </ul>
+        <div class="dropdown border-top"> 
+          <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false"> 
+            <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle"> 
+          </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+                <li><a class="dropdown-item" href="#">Nuevo Proyecto...</a></li>
+                <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#" (click)="LogOut()">Cerrar sesion</a></li>
+            </ul>
+        </div>
       </div>
-      <div>
-        <a (click)="LogOut()" class="btn btn-alert" style="margin-right: 10px; margin-left: 10px; color:azure">
-          <i class="fas fa-tachometer-alt"></i>LogOut
-        </a>
-      </div>
-  </nav>
-  </form>
+    </form>
+  </div>
+  <div class="col-sm p-3 min-vh-100">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<router-outlet></router-outlet>

@@ -11,13 +11,13 @@ import { SchemesService } from '../../../Services/schemes.service';
 import { Schemes } from '../../../Interfaces/schemes';
 import { StatusService } from '../../../Services/status.service';
 import { Status } from '../../../Interfaces/status';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../../Services/login.service';
 
 @Component({
     selector: 'app-create',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, RouterModule],
     templateUrl: './create.component.html',
     styleUrl: './create.component.css'
 })

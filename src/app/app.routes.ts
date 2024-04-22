@@ -32,6 +32,10 @@ export const routes: Routes = [
                 path: 'clientsservices/:PpcsId/view',
                 loadComponent: () => import('./views/clientsservices/view/view.component').then((c) => c.ClientsservicesServiceViewComponent)
             },
+            {
+                path: 'clientsservices/:PpcsId/pay',
+                loadComponent: () => import('./views/clientsservices/pay/pay.component').then((c) => c.PayComponent)
+            },
             //CATALOGOS
             {
                 path: 'business/index', 

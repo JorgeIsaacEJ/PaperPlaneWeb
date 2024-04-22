@@ -1,6 +1,5 @@
 // ---------Responsive-navbar-active-animation-----------
 function test(){
-	console.log("HOLI");
 	var tabsNewAnim = $('#navbarSupportedContent');
 	var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
 	var activeItemNewAnim = tabsNewAnim.find('.active');
@@ -30,7 +29,6 @@ function test(){
 	});
 }
 $(document).ready(function(){
-	alert("AQUI");
 	setTimeout(function(){ test(); });
 });
 $(window).on('resize', function(){

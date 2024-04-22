@@ -15,12 +15,12 @@
                 <th>Campanias</th>
                 <th>Comisiones</th> -->
                 <th>Fecha/Pago</th>
-                <th>Acciones</th>
+                <th style="text-align: center;">Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let clientsservices of clientsservicesfull">
-                <td>{{clientsservices.ppc_id}}</td>
+                <td>{{clientsservices.ppp_id}}</td>
                 <td>{{clientsservices.ppc_name}}</td>
                 <td>{{clientsservices.pps_name}}</td>
                 <td>{{clientsservices.ppsc_name}}</td>
@@ -32,6 +32,7 @@
                 <td>{{clientsservices.ppcs_pays_task | currency:'USD':true:'1.2-2'}}</td> -->
                 <td>{{clientsservices.ppcs_date_pay | date: 'dd/MM/yyyy'}}</td>
                 <td>
+                    <a href="#" [routerLink]="['/clientsservices/', clientsservices.ppc_id, 'pay']" class="btn btn-success">Pago</a>
                     <a href="#" [routerLink]="['/clientsservices/', clientsservices.ppc_id, 'view']" class="btn btn-info">Info</a>
                     <a href="#" [routerLink]="['/clientsservices/', clientsservices.ppc_id, 'edit']" class="btn btn-primary">Editar</a>
                 </td>
