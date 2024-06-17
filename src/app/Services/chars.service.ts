@@ -23,8 +23,8 @@ export class CharsService {
     return this.http.get<Point>(`${this.apiUrl}GetSalesChar`);
   }
 
-  getListGoals():Observable<any>{
-    return this.http.get<Point>(`${this.apiUrl}GetGoalsChar`);
+  getListGoals(year: number):Observable<any>{
+    return this.http.get<Point>(`${this.apiUrl}GetGoalsChar?year=`+ year);
   }
 }
  

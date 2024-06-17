@@ -62,7 +62,7 @@ export class HomeComponent {
   ngOnInit():void{
     this.getServicesPie();
     this.getSalesPoint();
-    this.getGoalsBar();
+    this.getGoalsBar(2023);
   }
 
   onSelect(data: any): void {
@@ -100,11 +100,11 @@ export class HomeComponent {
   }
 
   //POINT VENTAS X ANIO
-  getGoalsBar(){
+  getGoalsBar(anio: number){
     //Valida si el usuario esta logeado
     this.loginservice.validateAccess().subscribe((data: boolean)=>{
       this.watch = data;
-      this.charservice.getListSales().subscribe((data:Point[])=>{
+      this.charservice.getListGoals(anio).subscribe((data:Point[])=>{
         this.bar = data;
       })
     })

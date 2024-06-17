@@ -1,12 +1,12 @@
 <div class="row" *ngIf="menuActive">
   <div class="col-sm-auto sticky-top">
     <form [formGroup]="form" (ngSubmit)="submit()">
-      <div class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 100px;">
+      <div class="d-flex flex-column flex-shrink-0 vh-100 MenuPaperplane" style="width: 100px;" id="MenuPaperplane">
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
             <li class="nav-item"> 
               <a routerLink="/home" class="nav-link py-3 border-bottom active"> 
                 <i class="fa fa-home"></i> 
-                <small>Paper Plane</small> 
+                <small>Home</small> 
               </a> </li>
             <li *ngFor="let item of pages"> 
               <a routerLink="{{item.userPages}}" class="nav-link py-3 border-bottom"> 
@@ -32,7 +32,7 @@
       </div>
     </form>
   </div>
-  <div class="col-sm p-3 min-vh-100">
+  <div class="col-sm p-3 min-vh-100 containerPlane">
     <router-outlet></router-outlet>
   </div>
 </div>

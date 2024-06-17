@@ -1,4 +1,4 @@
-<div class="container" *ngIf="watch">
+<div class="" *ngIf="watch">
     <div class="row">
       <div class="col">
         <h2>Total de servicios contratados</h2>
@@ -33,9 +33,10 @@
       </div>
       <div class="w-100"></div>
       <div class="col">
+        <h2>Objetivos mensuales</h2>
         <ngx-charts-bar-vertical-2d
           [view]="view"
-          [results]="multi"
+          [results]="bar"
           [gradient]="gradient"
           [xAxis]="showXAxis"
           [yAxis]="showYAxis"
