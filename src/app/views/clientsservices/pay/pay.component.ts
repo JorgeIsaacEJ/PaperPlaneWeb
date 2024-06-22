@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Clientsservicesfull } from '../../../Interfaces/clientsservicesfull';
 
 @Component({
   selector: 'app-pay',
@@ -12,8 +14,12 @@ export class PayComponent {
   form!:FormGroup;
   @Output() getPayment = new EventEmitter<any>();
 
-  constructor(){
+  constructor(
+    public dialogRef: MatDialogRef<PayComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { clientsservicesfull: Clientsservicesfull }) { }
 
+    onNoClick(): void {
+      this.dialogRef.close();
   }
 
   ngOnInit(): void{

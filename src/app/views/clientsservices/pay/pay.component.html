@@ -1,69 +1,69 @@
-<div class="row">
-    <div class="col-75">
-      <div class="container">
-        <form action="/action_page.php">
-        
-          <div class="row">
-            <div class="col-50">
-              <h3>Datos Generales</h3>
-              <label for="fname"><i class="fa fa-user"></i>Cliente</label>
-              <input type="text" id="fname" name="firstname" placeholder="Cliente">
-              <label for="email"><i class="fa fa-envelope"></i>Servicio</label>
-              <input type="text" id="email" name="email" placeholder="Servicio">
-              <label for="adr"><i class="fa fa-address-card-o"></i>Negocio</label>
-              <input type="text" id="adr" name="address" placeholder="Negocio">
-              <label for="city"><i class="fa fa-institution"></i> Esquema</label>
-              <input type="text" id="city" name="city" placeholder="Esquema">
-  
-              <div class="row" style="display: none;">
-                <div class="col-50">
-                  <label for="state">State</label>
-                  <input type="text" id="state" name="state" placeholder="NY">
-                </div>
-                <div class="col-50">
-                  <label for="zip">Zip</label>
-                  <input type="text" id="zip" name="zip" placeholder="10001">
-                </div>
+<div mat-dialog-content>
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+
+        <div class="row">
+          <div class="col-50">
+            <h3>{{ data.clientsservicesfull.ppc_name }} PAGO</h3>
+            <label for="fname"><i class="fa fa-user"></i>Cliente</label>
+            <input type="text" id="fname" name="firstname" placeholder="Cliente" [value]="data.clientsservicesfull.ppc_name" disabled>
+            <label for="email"><i class="fa fa-envelope"></i>Servicio</label>
+            <input type="text" id="email" name="email" placeholder="Servicio" [value]="data.clientsservicesfull.pps_name" disabled>
+            <label for="adr"><i class="fa fa-address-card-o"></i>Negocio</label>
+            <input type="text" id="adr" name="address" placeholder="Negocio" [value]="data.clientsservicesfull.ppb_name" disabled>
+            <label for="city"><i class="fa fa-institution"></i> Esquema</label>
+            <input type="text" id="city" name="city" placeholder="Esquema" [value]="data.clientsservicesfull.ppsc_name" disabled>
+
+            <div class="row" style="display: none;">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
               </div>
             </div>
-  
-            <div class="col-50">
-              <h3>Servicios</h3>
-              <label for="cname">Monto del pago</label>
-              <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-              <label for="ccnum">Tipo de servicio</label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-              <label for="expmonth">Servicio</label>
-              <input type="text" id="expmonth" name="expmonth" placeholder="September">
-              <div class="row">
-                <div class="col-50">
-                  <label for="expyear">Fecha limite</label>
-                  <input type="text" id="expyear" name="expyear" placeholder="01/01/1990">
-                </div>
-                <div class="col-50">
-                  <label for="cvv">Fecha de pago</label>
-                  <input type="date" id="cvv" name="cvv" placeholder="">
-                </div>
-              </div>
-            </div>
-            
           </div>
-          <label>
-            <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-          </label>
-          <input type="submit" value="Continue to checkout" class="btn">
-        </form>
-      </div>
-    </div>
-    <div class="col-25" style="display: none;">
-      <div class="container">
-        <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-        <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-        <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-        <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-        <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-        <hr>
-        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-      </div>
+
+          <div class="col-50">
+            <h3>Servicios</h3>
+            <label for="cname">Monto del pago</label>
+            <input type="text" id="cname" name="cardname" placeholder="$1" [value]="data.clientsservicesfull.ppcs_pay">
+            <label for="ccnum">Tipo de servicio</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" [value]="data.clientsservicesfull.pps_name">
+            <label for="expmonth">Servicio</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Fecha limite</label>
+                <input type="text" id="expyear" name="expyear" placeholder="01/01/1990" [value]="data.clientsservicesfull.ppcs_date_pay" disabled>
+              </div>
+              <div class="col-50">
+                <label for="cvv">Fecha de pago</label>
+                <input type="date" id="cvv" name="cvv" placeholder="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+        </label>
+        <input type="submit" value="Continue to checkout" class="btn">
+      </form>
     </div>
   </div>
+  <div class="col-25" style="display: none;">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+    </div>
+  </div>
+</div>
